@@ -1,6 +1,6 @@
-FROM bitwalker/s2i-alpine-base:2.0
+FROM elixir
 
-MAINTAINER Paul Schoenfelder <paulschoenfelder@gmail.com>
+MAINTAINER Daniel Dreier <d@puppet.com>
 
 EXPOSE 5000
 
@@ -20,17 +20,7 @@ LABEL \
   io.openshift.tags="builder,elixir,elixir-1.4.2" \
   com.redhat.deployments-dir="$HOME"
 
-RUN apk add --no-cache --update \
-  ncurses-libs erlang erlang-dev erlang-kernel erlang-hipe erlang-compiler \
-  erlang-stdlib erlang-erts erlang-tools erlang-syntax-tools erlang-sasl \
-  erlang-crypto erlang-public-key erlang-ssl erlang-ssh erlang-asn1 erlang-inets \
-  erlang-mnesia erlang-odbc erlang-xmerl erlang-erl-interface erlang-parsetools erlang-eunit \
-  nodejs elixir && \
-  npm install npm -g --no-progress && \
-  rm -rf /var/cache/apk/*
-
-ENV PATH=${HOME}/node_modules/.bin:$PATH
-
+RUN mkdir -p /opt/app-root
 RUN mix local.hex --force && \
     mix local.rebar --force
 
