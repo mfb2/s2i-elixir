@@ -1,7 +1,7 @@
 .PHONY: help test
 
 VERSION ?= `cat VERSION`
-IMAGE_NAME ?= bitwalker/s2i-elixir
+IMAGE_NAME ?= mfb2/s2i-elixir
 
 help:
 	@echo "$(IMAGE_NAME):$(VERSION)"

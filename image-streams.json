@@ -24,7 +24,7 @@
             },
             "from": {
               "kind": "DockerImage",
-              "name": "bitwalker/s2i-elixir:latest"
+              "name": "mfb2/s2i-elixir:latest"
             }
           }
         ]
