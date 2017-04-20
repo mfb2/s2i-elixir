@@ -18,8 +18,8 @@
             "annotations": {
               "description": "Build and run Elixir applications",
               "iconClass": "icon-elixir",
-              "tags": "builder,elixir,elixir-1.2.6",
-              "supports":"elixir:1.2.6,elixir",
+              "tags": "builder,elixir,elixir-1.4.2",
+              "supports":"elixir:1.4.2,elixir",
               "sampleRepo": "https://github.com/bitwalker/phoenix_example.git"
             },
             "from": {

@@ -15,9 +15,9 @@ ENV \
 
 LABEL \
   io.k8s.description="Platform for building and running Elixir applications" \
-  io.k8s.display-name="Elixir v1.2.6, Node.js v6.2" \
+  io.k8s.display-name="Elixir v1.4.2, Node.js v6.2" \
   io.openshift.expose-services="5000:http" \
-  io.openshift.tags="builder,elixir,elixir-1.2.6" \
+  io.openshift.tags="builder,elixir,elixir-1.4.2" \
   com.redhat.deployments-dir="$HOME"
 
 RUN apk add --no-cache --update \
