@@ -7,10 +7,4 @@ if [ "$1" == "--debug" ]; then
 fi
 
 # Runs the Elixir application.
-mix help phoenix.server >/dev/null 2>/dev/null
-exit_status="$?"
-if [ "$exit_status" -eq 0 ]; then
-    exec elixir --sname app --cookie app --hidden --no-halt -S mix phoenix.server
-fi
-    exec elixir --sname app --cookie app --hidden --no-halt -S mix run
-fi
+exec elixir --sname app --cookie app --hidden --no-halt -S mix run

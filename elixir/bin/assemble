@@ -2,52 +2,6 @@
 
 echo "---> Installing application source"
 cp -Rf /tmp/src/. ./
-rm -rf ./node_modules
-
-if [ ! -z $HTTP_PROXY ]; then
-  echo "---> Setting npm http proxy to $HTTP_PROXY"
-  npm config set proxy $HTTP_PROXY
-fi
-
-if [ ! -z $http_proxy ]; then
-  echo "---> Setting npm http proxy to $http_proxy"
-  npm config set proxy $http_proxy
-fi
-
-if [ ! -z $HTTPS_PROXY ]; then
-  echo "---> Setting npm https proxy to $HTTPS_PROXY"
-  npm config set https-proxy $HTTPS_PROXY
-fi
-
-if [ ! -z $https_proxy ]; then
-  echo "---> Setting npm https proxy to $https_proxy"
-  npm config set https-proxy $https_proxy
-fi
 
 echo "---> Building your Elixir application from source"
 mix do deps.get, compile
-
-if [ -f "package.json" ]; then
-    echo "---> Building your Node application from source"
-    npm install -d --no-progress
-
-    echo "----> Building frontend code..."
-    s=$(which webpack 2>/dev/null)
-    if [ "$s" != "" ]; then
-        echo "----> Using Webpack.."
-        webpack -p
-    else
-        s=$(which brunch 2>/dev/null)
-        if [ "$s" != "" ]; then
-            echo "----> Using Brunch.."
-            brunch build --production
-        else
-            echo "WARNING: Neither webpack or brunch are being used, skipping frontend build!"
-        fi
-    fi
-
-    mix phoenix.digest 2>/dev/null
-fi
-
-# Fix source directory permissions
-fix-permissions ./
