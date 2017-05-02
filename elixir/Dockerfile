@@ -11,6 +11,7 @@ ENV \
   NODE_ENV=production \
   DEL_PKGS="libgcc libstdc++" \
   RM_DIRS=/usr/include \
+  STI_SCRIPTS_PATH=/usr/libexec/s2i \
   REFRESHED_AT=2016-06-07
 
 LABEL \
@@ -18,6 +19,7 @@ LABEL \
   io.k8s.display-name="Elixir v1.4.2, Node.js v6.2" \
   io.openshift.expose-services="5000:http" \
   io.openshift.tags="builder,elixir,elixir-1.4.2" \
+  io.s2i.scripts-url=image:///usr/libexec/s2i \
   com.redhat.deployments-dir="$HOME"
 
 RUN mkdir -p /opt/app-root
